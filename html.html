@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Virtual Notebook</title>
+</head>
+<body>
+
+    <h1>Notebook Login</h1>
+    
+    <p>Enter your name below to access the notebook system.</p>
+    
+    <div>
+        <label>Username:</label>
+        <input type="text" id="userName">
+        <br><br>
+        <button onclick="loginUser()">Login</button>
+    </div>
+
+    <hr>
+    <p>Reference: <a href="https://www.w3schools.com">w3schools.com</a></p>
+
+    <script>
+        // JavaScript Function
+        function loginUser() {
+            // JavaScript Variable
+            let name = document.getElementById("userName").value;
+
+            // JavaScript Conditional Statement
+            if (name === "") {
+                window.alert("Field cannot be empty.");
+            } else {
+                // JavaScript Output
+                window.alert("Hello " + name + ". Redirecting...");
+                window.location.href = "notebooks.html";
+            }
+        }
+    </script>
+</body>
+</html>
