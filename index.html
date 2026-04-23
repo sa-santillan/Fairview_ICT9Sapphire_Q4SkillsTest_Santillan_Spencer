@@ -27,48 +27,69 @@
         }
 
         .form-control { 
-            border-radius: 0; 
-            border: 1px solid #000; 
+    border-radius: 10px; 
+    border: 1px solid #000; 
         }
+
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2 class="text-center mb-4">Log In</h2>
         
-        <p class="small text-center mb-4">Please enter your username and password</p>
+        <p class="small text-center mb-4">Please enter your username and password to view your virtual notebook.</p>
 
-        <form>
+        <form>  
             <div class="mb-3">
                 <label class="form-label small fw-bold">Username</label>
-                <input type="text" id="user" class="form-control" placeholder="username">
+                <input type="text" id="user" class="form-control" placeholder="renn santos">
             </div>
             <div class="mb-3">
                 <label class="form-label small fw-bold">Password</label>
-                <input type="password" class="form-control" placeholder="password">
+                <input type="password" class="form-control" placeholder="iloveict6767">
             </div>
             <div class="d-grid gap-2">
-                <button type="button" onclick="handleLogin()" class="btn btn-dark">Log In</button>
+                <button type="button" onclick="handleLogin()" class="btn btn-dark rounded-3">Log In</button>
+                <input type="reset" name="button" id="cancel" value="Cancel" class="btn btn-dark rounded-3" >
+            </div>
+
             </div>
         </form>
     </div>
 
     <script>
-        // JavaScript Variables and Operators
-        // JavaScript Comments
-        function handleLogin() {
-            let username = document.getElementById('user').value;
-            let minLength = 1;
+    let AttemptCounter = 0;
+    const MAXAttempts = 3;
 
-            // JavaScript Conditional Statement
-            if (username.length >= minLength) {
-                // JavaScript Output
-                window.alert("Login Successful");
-                window.location.href = "notebooks.html";
+    function handleLogin() {
+        let username = document.getElementById("user").value;
+        let password = document.querySelector('input[type="password"]').value;
+        let button = document.querySelector("button");
+
+        let correctUser = "renn santos";
+        let correctPass = "iloveict6767";
+
+        if (button.disabled) return;
+
+        if (username === correctUser && password === correctPass) {
+            alert("Login successful!");
+            AttemptCounter = 0;
+            window.location.href = "virtual notebooks.html";
+        } 
+        
+        else {
+            AttemptCounter++;
+
+            if (AttemptCounter >= MAXAttempts) {
+                alert("Access denied. You are now locked out.");
+                button.disabled = true;
+
             } else {
-                window.alert("Please enter a username.");
+                alert("Incorrect username or password. Attempt " + AttemptCounter + " of 3");
             }
         }
-    </script>
+    }
+
+</script>
 </body>
-</html> 
+</html>
